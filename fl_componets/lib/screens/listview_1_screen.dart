@@ -18,7 +18,9 @@ class Listview1Screen extends StatelessWidget {
           title: const Text('ListView Tipo 1'),
         ),
         body: ListView.separated(
-            itemBuilder: (context, index) => Text(options[index]),
+            itemBuilder: (context, index) => ListTile(
+                title: Text(options[index]),
+                trailing: const Icon(Icons.arrow_forward_rounded)),
             separatorBuilder: (_, __) => const Divider(),
             itemCount: options.length));
   }
