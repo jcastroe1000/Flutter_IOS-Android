@@ -16,11 +16,17 @@ class Listview1Screen extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           title: const Text('ListView Tipo 1'),
+          elevation: 10,
+          backgroundColor: Colors.indigo,
         ),
         body: ListView.separated(
             itemBuilder: (context, index) => ListTile(
                 title: Text(options[index]),
-                trailing: const Icon(Icons.arrow_forward_rounded)),
+                trailing: const Icon(
+                  Icons.arrow_forward_rounded,
+                  color: Colors.indigo,
+                ),
+                onTap: () {}),
             separatorBuilder: (_, __) => const Divider(),
             itemCount: options.length));
   }
