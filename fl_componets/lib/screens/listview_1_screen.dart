@@ -17,14 +17,9 @@ class Listview1Screen extends StatelessWidget {
         appBar: AppBar(
           title: const Text('ListView Tipo 1'),
         ),
-        body: ListView(
-          children: [
-            ...options
-                .map((e) => ListTile(
-                    title: Text(e),
-                    trailing: const Icon(Icons.arrow_forward_rounded)))
-                .toList(),
-          ],
-        ));
+        body: ListView.separated(
+            itemBuilder: (context, index) => Text(options[index]),
+            separatorBuilder: (_, __) => const Divider(),
+            itemCount: options.length));
   }
 }
