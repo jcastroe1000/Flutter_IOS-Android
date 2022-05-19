@@ -27,7 +27,10 @@ class AlertScreen extends StatelessWidget {
             actions: [
               TextButton(
                   onPressed: () => Navigator.pop(context),
-                  child: const Text('Cancelar'))
+                  child: const Text('Cancelar')),
+              TextButton(
+                  onPressed: () => Navigator.pop(context),
+                  child: const Text('OK')),
             ],
           );
         });
