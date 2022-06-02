@@ -59,6 +59,7 @@ class ButtonSection extends StatelessWidget {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 70, vertical: 50),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Column(
             children: [
