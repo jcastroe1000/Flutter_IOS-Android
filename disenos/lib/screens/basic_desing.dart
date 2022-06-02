@@ -11,7 +11,14 @@ class BasicDesingScreen extends StatelessWidget {
         body: Column(children: [
       Image(image: AssetImage('assets/lighting.jpg')),
       Title(),
-      ButtonSection()
+      ButtonSection(),
+      Container(
+        margin: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+        child: Text(
+          'Enim consequat Lorem sit est id incididunt ullamco in exercitation occaecat voluptate duis. Adipisicing sunt et veniam Lorem ad cillum ea dolor ut. Dolor aliquip esse excepteur laborum sint sunt fugiat in Lorem deserunt anim dolor occaecat. Aliquip cupidatat nisi dolor culpa duis aliquip laboris amet consectetur sit duis esse.',
+          textAlign: TextAlign.justify,
+        ),
+      )
     ]));
   }
 }
@@ -61,58 +68,45 @@ class ButtonSection extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Column(
-            children: [
-              Icon(
-                Icons.phone,
-                color: Colors.blue,
-              ),
-              SizedBox(
-                height: 12,
-              ),
-              Text(
-                'CALL',
-                style: TextStyle(
-                  color: Colors.blue,
-                  fontWeight: FontWeight.bold,
-                ),
-              )
-            ],
-          ),
-          Column(
-            children: [
-              Icon(
-                Icons.room_outlined,
-                color: Colors.blue,
-              ),
-              SizedBox(
-                height: 12,
-              ),
-              Text(
-                'ROUTE',
-                style:
-                    TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),
-              )
-            ],
-          ),
-          Column(
-            children: [
-              Icon(
-                Icons.share,
-                color: Colors.blue,
-              ),
-              SizedBox(
-                height: 12,
-              ),
-              Text(
-                'SHARE',
-                style:
-                    TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),
-              )
-            ],
-          )
+          CustomButtom(icon: Icons.call, textButtom: 'CALL'),
+          CustomButtom(icon: Icons.room_outlined, textButtom: 'ROUTE'),
+          CustomButtom(icon: Icons.share, textButtom: 'SHARE')
         ],
       ),
+    );
+  }
+}
+
+class CustomButtom extends StatelessWidget {
+  final IconData icon;
+  final String textButtom;
+
+  const CustomButtom({
+    Key? key,
+    required this.icon,
+    required this.textButtom,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Icon(
+          this.icon,
+          color: Colors.blue,
+          size: 30,
+        ),
+        SizedBox(
+          height: 12,
+        ),
+        Text(
+          this.textButtom,
+          style: TextStyle(
+            color: Colors.blue,
+            fontWeight: FontWeight.bold,
+          ),
+        )
+      ],
     );
   }
 }
