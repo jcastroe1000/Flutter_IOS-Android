@@ -34,9 +34,10 @@ class _HomePageBody extends StatelessWidget {
 
     final int currentIndex = uiProvider.selectedMenuOpt;
 
-    final tempScan = new ScanModel(valor: 'http://facebook.com');
-    DBProvider.db.nuevoScan(tempScan);
-
+    // final tempScan = new ScanModel(valor: 'http://facebook.com');
+    // DBProvider.db.nuevoScan(tempScan);
+    // DBProvider.db.getScanById(5).then((scan) => print(scan.valor));
+    DBProvider.db.getAllScans().then(print);
     switch (currentIndex) {
       case 0:
         return MapasPage();
