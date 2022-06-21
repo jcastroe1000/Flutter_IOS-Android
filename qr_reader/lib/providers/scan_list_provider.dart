@@ -28,6 +28,7 @@ class ScanListProvider extends ChangeNotifier {
     final scans = await DBProvider.db.getScansPorTipo(tipo);
     this.scans = [...scans];
     this.tipoSeleccionado = tipo;
+    print(tipo);
     notifyListeners();
   }
 

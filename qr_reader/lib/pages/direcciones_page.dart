@@ -5,7 +5,7 @@ class DireccionesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScanTiles(
-      tipo: 'geo',
+      tipo: 'http',
     );
   }
 }
