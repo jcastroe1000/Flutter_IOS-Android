@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:productos_app/ui/input_decoration.dart';
 import 'package:productos_app/widgets/widgets.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -31,6 +32,9 @@ class LoginScreen extends StatelessWidget {
             Text(
               'Crear cuenta nueva',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(
+              height: 30,
             )
           ],
         ),
@@ -47,21 +51,38 @@ class _LoginForm extends StatelessWidget {
           child: Column(
         children: [
           TextFormField(
-            autocorrect: false,
-            keyboardType: TextInputType.emailAddress,
-            decoration: const InputDecoration(
-                enabledBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: Colors.deepPurple)),
-                focusedBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: Colors.deepPurple, width: 2)),
-                hintText: 'micuenta@gmail.com',
-                labelText: 'Email',
-                labelStyle: TextStyle(color: Colors.grey),
-                prefixIcon: Icon(
-                  Icons.alternate_email_outlined,
-                  color: Colors.deepPurple,
-                )),
-          )
+              autocorrect: false,
+              keyboardType: TextInputType.emailAddress,
+              decoration: InputDecorations.authInpuDecoration(
+                  hintText: 'mi_correo@gmail.com',
+                  labelText: 'Email',
+                  prefixIcon: Icons.alternate_email_outlined)),
+          const SizedBox(
+            height: 30,
+          ),
+          TextFormField(
+              autocorrect: false,
+              obscureText: true,
+              keyboardType: TextInputType.emailAddress,
+              decoration: InputDecorations.authInpuDecoration(
+                  hintText: '*****',
+                  labelText: 'Password',
+                  prefixIcon: Icons.lock_clock_outlined)),
+          SizedBox(height: 30),
+          MaterialButton(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10)),
+              disabledColor: Colors.grey,
+              elevation: 0,
+              color: Colors.deepPurple,
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                child: Text(
+                  'Ingresar',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+              onPressed: () {})
         ],
       )),
     );
