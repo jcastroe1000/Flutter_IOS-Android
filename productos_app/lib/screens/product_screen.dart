@@ -74,8 +74,9 @@ class _ProductForm extends StatelessWidget {
             ),
             const SizedBox(height: 30),
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text('Disponible'),
+                const Text('Disponible'),
                 Switch.adaptive(
                     value: true,
                     activeColor: Colors.indigo,
@@ -93,13 +94,13 @@ class _ProductForm extends StatelessWidget {
 
   BoxDecoration _BuildBoxDecoration() => BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.only(
+          borderRadius: const BorderRadius.only(
               bottomRight: Radius.circular(25),
               bottomLeft: Radius.circular(25)),
           boxShadow: [
             BoxShadow(
                 color: Colors.black.withOpacity(0.05),
-                offset: Offset(0, 5),
+                offset: const Offset(0, 5),
                 blurRadius: 5)
           ]);
 }
