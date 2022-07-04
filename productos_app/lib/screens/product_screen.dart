@@ -70,7 +70,7 @@ class _ProductScreenBody extends StatelessWidget {
         _ProductForm(),
         const SizedBox(height: 100)
       ])),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       floatingActionButton: FloatingActionButton(
         child: productService.isSaving
             ? CircularProgressIndicator(
