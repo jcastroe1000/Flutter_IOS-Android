@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'App Productos',
-        initialRoute: 'checking',
+        initialRoute: 'login',
         routes: {
           'checking': (_) => CheckAuthScreen(),
           'home': (_) => HomeScreen(),
@@ -36,6 +36,7 @@ class MyApp extends StatelessWidget {
           'products': (_) => ProductScreen(),
           'registrar': (_) => RegisterScreen(),
         },
+        scaffoldMessengerKey: ServiceNotifications.messengerKey,
         theme: ThemeData.light().copyWith(
             scaffoldBackgroundColor: Colors.grey[300],
             appBarTheme: const AppBarTheme(elevation: 0, color: Colors.indigo),
