@@ -7,6 +7,7 @@ void main() async {
   await PushNotificationsService.initializeApp();
   runApp(MyApp());
 }
+<<<<<<< HEAD
 
 class MyApp extends StatefulWidget {
   @override
@@ -21,6 +22,8 @@ class _MyAppState extends State<MyApp> {
       print('MyApp $message');
     });
   }
+=======
+>>>>>>> 9d00f14d9910a6aaab6523535764a9cef4667dab
 
   @override
   Widget build(BuildContext context) {
