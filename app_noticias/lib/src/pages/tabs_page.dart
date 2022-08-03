@@ -39,22 +39,31 @@ class _Navegation extends StatelessWidget {
 class _Paginas extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return PageView(physics: NeverScrollableScrollPhysics(), children: <Widget>[
-      Container(
-        color: Colors.red,
-      ),
-      Container(color: Colors.green)
-    ]);
+    final navegacionModel = Provider.of<_NavegationModel>(context);
+    return PageView(
+        controller: navegacionModel.pageController,
+        physics: NeverScrollableScrollPhysics(),
+        children: <Widget>[
+          Container(
+            color: Colors.red,
+          ),
+          Container(color: Colors.green)
+        ]);
   }
 }
 
 class _NavegationModel with ChangeNotifier {
   int _actualPage = 0;
+  PageController _pageController = new PageController();
 
   int get actualpage => this._actualPage;
 
   set actualPage(int valor) {
     this._actualPage = valor;
+    _pageController.animateToPage(valor,
+        duration: Duration(microseconds: 250), curve: Curves.easeOut);
     notifyListeners();
   }
+
+  PageController get pageController => this._pageController;
 }
