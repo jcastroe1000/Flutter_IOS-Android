@@ -38,7 +38,7 @@ class Article {
   Article({
     required this.source,
     this.author,
-    this.title,
+    required this.title,
     this.description,
     this.url,
     this.urlToImage,
@@ -48,7 +48,7 @@ class Article {
 
   Source source;
   String? author;
-  String? title;
+  String title;
   String? description;
   String? url;
   String? urlToImage;
