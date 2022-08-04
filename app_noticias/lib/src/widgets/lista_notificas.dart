@@ -29,7 +29,12 @@ class _Noticia extends StatelessWidget {
       children: [
         _TarjetaTopBar(noticia, index),
         _TarjetaTitulo(noticia),
+        SizedBox(height: 20),
         _TarjetImagen(noticia),
+        _TarjetaBody(noticia),
+        _TarjetaBotones(),
+        SizedBox(height: 15),
+        Divider(),
       ],
     );
   }
@@ -84,6 +89,70 @@ class _TarjetImagen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return ClipRRect(
+      borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(50), bottomRight: Radius.circular(50)),
+      child: Container(
+          child: ('${noticia.urlToImage}' != null)
+              ? FadeInImage(
+                  imageErrorBuilder: (context, error, stackTrace) {
+                    return Container(
+                        width: 270,
+                        height: 220,
+                        child: const Image(
+                            image: AssetImage('assets/img/no-image.png')));
+                  },
+                  placeholder: AssetImage('assets/img/giphy.gif'),
+                  image: NetworkImage('${noticia.urlToImage}'))
+              : Image(image: AssetImage('assets/img/no-image.png'))),
+    );
+  }
+}
+
+class _TarjetaBody extends StatelessWidget {
+  final Article noticia;
+
+  const _TarjetaBody(this.noticia);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+      child: Text(
+        (noticia.description != null)
+            ? noticia.description
+            : 'No hay Descripción',
+        style: TextStyle(
+            fontSize: 15, fontWeight: FontWeight.bold, color: Colors.lightBlue),
+      ),
+    );
+  }
+}
+
+class _TarjetaBotones extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        child: Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        RawMaterialButton(
+          onPressed: () {},
+          fillColor: Colors.amber,
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+          child: Icon(Icons.star_border),
+        ),
+        SizedBox(height: 25),
+        RawMaterialButton(
+            onPressed: () {},
+            fillColor: Colors.pinkAccent,
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+            child: Icon(
+              Icons.more_horiz,
+            ))
+      ],
+    ));
   }
 }
