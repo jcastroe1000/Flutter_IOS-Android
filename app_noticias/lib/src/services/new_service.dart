@@ -59,4 +59,7 @@ class NewsService with ChangeNotifier {
     this.categoryArticles[category]!.addAll(newsResponse.articles);
     notifyListeners();
   }
+
+  List<Article> get getArticlesByCategorySelected =>
+      this.categoryArticles[this.selectedCategory]!;
 }
