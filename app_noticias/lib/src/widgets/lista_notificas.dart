@@ -120,7 +120,7 @@ class _TarjetaBody extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
       child: Text(
         (noticia.description != null)
-            ? noticia.description
+            ? noticia.description!
             : 'No hay Descripción',
         style: TextStyle(
             fontSize: 15, fontWeight: FontWeight.bold, color: Colors.lightBlue),

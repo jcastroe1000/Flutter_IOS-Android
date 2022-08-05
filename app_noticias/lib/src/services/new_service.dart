@@ -9,18 +9,33 @@ final _APIKEY = 'ed94b02917ae4b67a1f2aef31855cafd';
 
 class NewsService with ChangeNotifier {
   List<Article> headlines = [];
+  String _selectedCategory = 'business';
+
   List<Category> categories = [
-    Category(FontAwesomeIcons.building, 'Business'),
-    Category(FontAwesomeIcons.tv, 'Entertainment'),
-    Category(FontAwesomeIcons.book, 'General'),
-    Category(FontAwesomeIcons.heart, 'Health'),
-    Category(FontAwesomeIcons.atom, 'Science'),
-    Category(FontAwesomeIcons.baseball, 'Dports'),
-    Category(FontAwesomeIcons.laptop, 'Technology'),
+    Category(FontAwesomeIcons.building, 'business'),
+    Category(FontAwesomeIcons.tv, 'entertainment'),
+    Category(FontAwesomeIcons.book, 'general'),
+    Category(FontAwesomeIcons.heart, 'health'),
+    Category(FontAwesomeIcons.atom, 'science'),
+    Category(FontAwesomeIcons.baseball, 'sports'),
+    Category(FontAwesomeIcons.laptop, 'technology'),
   ];
+
+  Map<String, List<Article>> categoryArticles = {};
 
   NewsService() {
     this.getTopHeadlines();
+    categories.forEach((item) {
+      this.categoryArticles[item.name] = [];
+    });
+  }
+
+  String get selectedCategory => this._selectedCategory;
+
+  set selectedCategory(String valor) {
+    this._selectedCategory = valor;
+    this.getArticlesByCategory(valor);
+    notifyListeners();
   }
 
   getTopHeadlines() async {
@@ -30,6 +45,18 @@ class NewsService with ChangeNotifier {
     final newsResponse = newsResponseFromJson(resp.body);
     this.headlines.addAll(newsResponse.articles);
     print(headlines);
+    notifyListeners();
+  }
+
+  getArticlesByCategory(String category) async {
+    if (this.categoryArticles[category]!.length > 0) {
+      return categoryArticles[category];
+    }
+    final url = Uri.parse(
+        '$_URL_NEWS/top-headlines?apiKey=$_APIKEY&country=mx&category=$category');
+    final resp = await http.get(url);
+    final newsResponse = newsResponseFromJson(resp.body);
+    this.categoryArticles[category]!.addAll(newsResponse.articles);
     notifyListeners();
   }
 }

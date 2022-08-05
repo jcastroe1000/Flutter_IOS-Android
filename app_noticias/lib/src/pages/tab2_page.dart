@@ -25,13 +25,14 @@ class _ListaCategorias extends StatelessWidget {
       scrollDirection: Axis.horizontal,
       itemCount: categories.length,
       itemBuilder: (BuildContext context, int index) {
+        final cName = categories[index].name;
         return Padding(
           padding: EdgeInsets.symmetric(horizontal: 15, vertical: 70),
           child: Column(
             children: [
               _CategoryButton(categories[index]),
               SizedBox(height: 5),
-              Text(categories[index].name)
+              Text('${cName[0].toUpperCase()}${cName.substring(1)}')
             ],
           ),
         );
@@ -47,19 +48,21 @@ class _CategoryButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final newsService = Provider.of<NewsService>(context);
     return GestureDetector(
       onTap: (() {
-        print('${categorias.name}');
+        final newsService = Provider.of<NewsService>(context, listen: false);
+        newsService.selectedCategory = categorias.name;
       }),
       child: Container(
         width: 40,
         height: 40,
         margin: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
         decoration: BoxDecoration(shape: BoxShape.circle, color: Colors.white),
-        child: Icon(
-          categorias.icon,
-          color: Colors.black87,
-        ),
+        child: Icon(categorias.icon,
+            color: (newsService.selectedCategory == this.categorias.name)
+                ? Colors.red
+                : Colors.black87),
       ),
     );
   }
