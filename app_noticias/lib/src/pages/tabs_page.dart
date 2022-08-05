@@ -1,4 +1,5 @@
 import 'package:app_noticias/src/pages/tab1_page.dart';
+import 'package:app_noticias/src/pages/tab2_page.dart';
 import 'package:app_noticias/src/services/new_service.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -46,7 +47,7 @@ class _Paginas extends StatelessWidget {
     return PageView(
         controller: navegacionModel.pageController,
         physics: NeverScrollableScrollPhysics(),
-        children: <Widget>[Tab1Page(), Container(color: Colors.green)]);
+        children: <Widget>[Tab1Page(), Tab2Page()]);
   }
 }
 

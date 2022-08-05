@@ -3,7 +3,13 @@ import 'package:app_noticias/src/widgets/lista_notificas.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class Tab1Page extends StatelessWidget {
+class Tab1Page extends StatefulWidget {
+  @override
+  State<Tab1Page> createState() => _Tab1PageState();
+}
+
+class _Tab1PageState extends State<Tab1Page>
+    with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
     final headlines = Provider.of<NewsService>(context).headlines;
@@ -14,4 +20,8 @@ class Tab1Page extends StatelessWidget {
             ? Center(child: CircularProgressIndicator())
             : ListaNoticias(headlines));
   }
+
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
 }
