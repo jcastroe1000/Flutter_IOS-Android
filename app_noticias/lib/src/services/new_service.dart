@@ -10,13 +10,13 @@ final _APIKEY = 'ed94b02917ae4b67a1f2aef31855cafd';
 class NewsService with ChangeNotifier {
   List<Article> headlines = [];
   List<Category> categories = [
-    Category(FontAwesomeIcons.building, 'business'),
-    Category(FontAwesomeIcons.tv, 'entertainment'),
-    Category(FontAwesomeIcons.book, 'general'),
-    Category(FontAwesomeIcons.heart, 'health'),
-    Category(FontAwesomeIcons.atom, 'science'),
-    Category(FontAwesomeIcons.baseball, 'sports'),
-    Category(FontAwesomeIcons.laptop, 'technology'),
+    Category(FontAwesomeIcons.building, 'Business'),
+    Category(FontAwesomeIcons.tv, 'Entertainment'),
+    Category(FontAwesomeIcons.book, 'General'),
+    Category(FontAwesomeIcons.heart, 'Health'),
+    Category(FontAwesomeIcons.atom, 'Science'),
+    Category(FontAwesomeIcons.baseball, 'Dports'),
+    Category(FontAwesomeIcons.laptop, 'Technology'),
   ];
 
   NewsService() {
